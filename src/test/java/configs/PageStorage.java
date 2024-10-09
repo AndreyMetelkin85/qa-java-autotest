@@ -5,17 +5,18 @@ import com.microsoft.playwright.Page;
 
 public class PageStorage {
     private final HomePage homePage;
-    private final DataGenerator testData;
+    private final TextBoxPage textBoxPage;
 
-    public PageStorage(Page page, DataGenerator testData) {
+    public PageStorage(Page page) {
         this.homePage = new HomePage(page);
-        this.testData = new DataGenerator();
+        this.textBoxPage = new TextBoxPage(page);
     }
 
     public HomePage getHomePage() {
         return homePage;
     }
-    public DataGenerator getTestData() {
-        return testData;
+
+    public  TextBoxPage getTextBoxPage() {
+        return textBoxPage;
     }
 }

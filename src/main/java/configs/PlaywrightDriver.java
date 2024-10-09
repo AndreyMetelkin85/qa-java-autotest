@@ -1,5 +1,8 @@
 package configs;
+
 import com.microsoft.playwright.*;
+import com.microsoft.playwright.options.WaitUntilState;
+
 import java.util.List;
 
 public class PlaywrightDriver {
@@ -13,7 +16,7 @@ public class PlaywrightDriver {
                 .setHeadless(false)
                 .setArgs(List.of("--start-maximized")));
         page = browser.newContext(new Browser.NewContextOptions().setViewportSize(null)).newPage();
-        page.navigate("https://demoqa.com", new Page.NavigateOptions().setTimeout(45000));
+        page.navigate("https://demoqa.com", new Page.NavigateOptions().setWaitUntil(WaitUntilState.DOMCONTENTLOADED));
     }
 
     public Page getPage() {
