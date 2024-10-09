@@ -17,6 +17,7 @@ public class TestSuiteElementCheck {
 
     @Test
     public void test_home_page() {
+
         var checkTitle = pageStorage.getHomePage().title_page();
         assert checkTitle.isVisible();
 
