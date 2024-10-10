@@ -3,7 +3,6 @@ package configs;
 import com.microsoft.playwright.Page;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.DisplayName;
 
 public class TestSuiteElementCheck {
     private final PlaywrightDriver driver;
@@ -18,6 +17,7 @@ public class TestSuiteElementCheck {
 
     @Test
     @DisplayName("Проверяем переход по сайту и заполнение формы валидными данными.")
+
     public void testElementTextBox() {
 
         var checkTitle = pageStorage.getHomePage().title_page();
