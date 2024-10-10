@@ -16,6 +16,8 @@ public class TestSuiteElementCheck {
     }
 
     @Test
+    @DisplayName("Проверяем переход по сайту и заполнение формы валидными данными.")
+
     public void testElementTextBox() {
 
         var checkTitle = pageStorage.getHomePage().title_page();
