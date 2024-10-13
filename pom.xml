@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
@@ -15,10 +14,11 @@
             <artifactId>playwright</artifactId>
             <version>1.47.0</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>5.4.0</version>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.11.2</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -26,22 +26,20 @@
             <artifactId>javafaker</artifactId>
             <version>1.0.2</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.yaml/snakeyaml -->
         <dependency>
             <groupId>org.yaml</groupId>
             <artifactId>snakeyaml</artifactId>
             <version>2.2</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.fusesource.jansi/jansi -->
         <dependency>
             <groupId>org.fusesource.jansi</groupId>
             <artifactId>jansi</artifactId>
             <version>2.4.0</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-junit4 -->
+        <!-- Allure integration with JUnit 5 -->
         <dependency>
             <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-junit4</artifactId>
+            <artifactId>allure-junit5</artifactId>
             <version>2.28.1</version>
             <scope>test</scope>
         </dependency>
