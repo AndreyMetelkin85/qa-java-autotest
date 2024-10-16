@@ -71,6 +71,44 @@ public class TestSuiteElementCheck {
         }
     }
 
+    @Test
+    @DisplayName("Проверяем работу кнопок на открытие и закрытие + отображения папок")
+    public void testCheckBoxExpandAndCloseFolders() {
+        var selectCategory = pageStorage.getHomePage().category_cards_home_page();
+        selectCategory.getFirst().click();
+
+        var elementsButtonCheckBox = pageStorage.getHomePage().left_panel_buttons();
+        elementsButtonCheckBox.get(1).click();
+
+        var boxExpandButton = pageStorage.elementsPage.expandAllButton();
+        boxExpandButton.click();
+
+        var openCheckAllFolders = pageStorage.elementsPage.gettingAllFolders();
+        System.out.println("Найдено папок после раскрытия: " + openCheckAllFolders.size());
+        for (var resultsOpen : openCheckAllFolders) {
+            if (resultsOpen.isVisible()) {
+                System.out.println("Папка под названием: " + resultsOpen.textContent() + " отображается");
+            } else {
+                System.out.println("Папка: " + resultsOpen.textContent() + " не отображается");
+            }
+        }
+
+        var boxCollapseAllButton = pageStorage.elementsPage.collapseAllButton();
+        boxCollapseAllButton.click();
+
+        var closeCheckAllFolders = pageStorage.elementsPage.gettingAllFolders();
+        System.out.println("Найдено папок после закрытия: " + closeCheckAllFolders.size());
+
+        for (var resultsClose : closeCheckAllFolders) {
+            if (!resultsClose.isVisible()) {
+                System.out.println("Папка " + resultsClose.textContent() + " успешно скрыта");
+            } else {
+                System.out.println("Ошибка: папка " + resultsClose.textContent() + " всё ещё видима");
+            }
+        }
+    }
+
+
     @AfterEach
     public void tearDown() {
         driver.close();
