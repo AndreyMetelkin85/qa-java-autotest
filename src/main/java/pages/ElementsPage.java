@@ -1,9 +1,11 @@
-package configs;
+package pages;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import base.BasePage;
 
 import java.util.List;
+
 
 public class ElementsPage extends BasePage {
     public ElementsPage(Page page) {

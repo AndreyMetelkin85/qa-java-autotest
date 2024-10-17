@@ -1,4 +1,4 @@
-package configs;
+package utils;
 
 import com.github.javafaker.Faker;
 
