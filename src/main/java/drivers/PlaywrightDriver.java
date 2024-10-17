@@ -1,4 +1,4 @@
-package configs;
+package drivers;
 
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.WaitUntilState;

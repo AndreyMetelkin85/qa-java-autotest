@@ -1,6 +1,10 @@
-package configs;
+package tests;
 
 import com.microsoft.playwright.Page;
+import utils.CustomExpect;
+import utils.DataGenerator;
+import pages.PageStorage;
+import drivers.PlaywrightDriver;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,13 +26,13 @@ public class TestSuiteElementCheck {
     @DisplayName("Проверяем переход по сайту и заполнение формы валидными данными.")
     public void testElementTextBox() {
 
-        var checkTitle = pageStorage.getHomePage().title_page();
+        var checkTitle = pageStorage.homePage.title_page();
         expect.toBeVisible(checkTitle, 2000);
 
-        var selectCategory = pageStorage.getHomePage().category_cards_home_page();
+        var selectCategory = pageStorage.homePage.category_cards_home_page();
         selectCategory.getFirst().click();
 
-        var selectLeftPanelButton = pageStorage.getHomePage().left_panel_buttons();
+        var selectLeftPanelButton = pageStorage.homePage.left_panel_buttons();
         selectLeftPanelButton.getFirst().click();
 
         // Генерируем данные для заполнения полей
@@ -37,22 +41,22 @@ public class TestSuiteElementCheck {
         String generatedCurrentAddress = DataGenerator.CurrentAddress();
         String generatedPermanentAddress = DataGenerator.PermanentAddress();
 
-        var inputFullName = pageStorage.getTextBoxPage().userFullName();
+        var inputFullName = pageStorage.textBoxPage.userFullName();
         inputFullName.fill(generatedFullName);
 
-        var inputEmail = pageStorage.getTextBoxPage().userEmail();
+        var inputEmail = pageStorage.textBoxPage.userEmail();
         inputEmail.fill(generatedEmail);
 
-        var inputCurrentAddress = pageStorage.getTextBoxPage().userCurrentAddress();
+        var inputCurrentAddress = pageStorage.textBoxPage.userCurrentAddress();
         inputCurrentAddress.fill(generatedCurrentAddress);
 
-        var inputPermanentAddress = pageStorage.getTextBoxPage().userPermanentAddress();
+        var inputPermanentAddress = pageStorage.textBoxPage.userPermanentAddress();
         inputPermanentAddress.fill(generatedPermanentAddress);
 
-        var clickButtonSubmit = pageStorage.getTextBoxPage().submitButton();
+        var clickButtonSubmit = pageStorage.textBoxPage.submitButton();
         clickButtonSubmit.click();
 
-        var checkResults = pageStorage.getTextBoxPage().outputField();
+        var checkResults = pageStorage.textBoxPage.outputField();
         for (var result : checkResults) {
             String textResult = result.textContent();
 
@@ -74,10 +78,10 @@ public class TestSuiteElementCheck {
     @Test
     @DisplayName("Проверяем работу кнопок на открытие и закрытие + отображения папок")
     public void testCheckBoxExpandAndCloseFolders() {
-        var selectCategory = pageStorage.getHomePage().category_cards_home_page();
+        var selectCategory = pageStorage.homePage.category_cards_home_page();
         selectCategory.getFirst().click();
 
-        var elementsButtonCheckBox = pageStorage.getHomePage().left_panel_buttons();
+        var elementsButtonCheckBox = pageStorage.homePage.left_panel_buttons();
         elementsButtonCheckBox.get(1).click();
 
         var boxExpandButton = pageStorage.elementsPage.expandAllButton();
@@ -85,6 +89,8 @@ public class TestSuiteElementCheck {
 
         var openCheckAllFolders = pageStorage.elementsPage.gettingAllFolders();
         System.out.println("Найдено папок после раскрытия: " + openCheckAllFolders.size());
+
+        // В цикле проверяем, что все разделы раскрыты и все папки отображаются.
         for (var resultsOpen : openCheckAllFolders) {
             if (resultsOpen.isVisible()) {
                 System.out.println("Папка под названием: " + resultsOpen.textContent() + " отображается");
@@ -99,6 +105,7 @@ public class TestSuiteElementCheck {
         var closeCheckAllFolders = pageStorage.elementsPage.gettingAllFolders();
         System.out.println("Найдено папок после закрытия: " + closeCheckAllFolders.size());
 
+        // В цикле проверяем, что все разделы скрыты и папки не отображаются.
         for (var resultsClose : closeCheckAllFolders) {
             if (!resultsClose.isVisible()) {
                 System.out.println("Папка " + resultsClose.textContent() + " успешно скрыта");

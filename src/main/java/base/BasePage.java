@@ -1,7 +1,8 @@
-package configs;
+package base;
 
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.AriaRole;
+import utils.LogManager;
 
 import java.util.List;
 

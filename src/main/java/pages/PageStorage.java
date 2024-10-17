@@ -1,11 +1,11 @@
-package configs;
+package pages;
 
 
 import com.microsoft.playwright.Page;
 
 public class PageStorage {
-    private final HomePage homePage;
-    private final TextBoxPage textBoxPage;
+    public final HomePage homePage;
+    public final TextBoxPage textBoxPage;
     public final ElementsPage elementsPage;
 
     public PageStorage(Page page) {
