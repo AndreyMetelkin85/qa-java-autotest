@@ -42,4 +42,22 @@ public class CustomExpect {
             throw e;
         }
     }
+
+//    public void containsText(Locator locator, String text) {
+//        try {
+//            String actualText = locator.textContent();
+//            assertThat(locator.textContent())
+//        } catch (Exception e) {
+//            LogManager.error("Текст: " + locator + "не соответствует ожидаемому тексту" + e.getMessage());
+//            throw e;
+//        }
+//    }
+//    public void  isDisabled(Locator locator, int timeout) {
+//        try {
+//            locator.isDisabled(new Locator.IsDisabledOptions().setTimeout(timeout));
+//        }
+//        catch (Exception e) {
+//            LogManager.error("Локатор: " + locator + "не имеет статус Disabled");
+//        }
+//    }
 }
