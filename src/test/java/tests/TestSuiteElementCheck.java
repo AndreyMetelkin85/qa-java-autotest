@@ -1,5 +1,6 @@
 package tests;
 
+import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import utils.CustomExpect;
 import utils.DataGenerator;
@@ -8,6 +9,8 @@ import drivers.PlaywrightDriver;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 public class TestSuiteElementCheck {
     private final PlaywrightDriver driver;
@@ -113,6 +116,35 @@ public class TestSuiteElementCheck {
                 System.out.println("Ошибка: папка " + resultsClose.textContent() + " всё ещё видима");
             }
         }
+    }
+
+    @Test
+    @DisplayName("В тесте проверяем, что пользователь может кликнуть по кнопкам radio button")
+    public void testRadioButtonCheck() {
+        var selectCategory = pageStorage.homePage.category_cards_home_page();
+        selectCategory.getFirst().click();
+
+        var elementsButtonCheckBox = pageStorage.homePage.left_panel_buttons();
+        elementsButtonCheckBox.get(2).click();
+
+        var checkTitle = pageStorage.elementsPage.radioButtonPageTitle();
+        expect.toBeVisible(checkTitle, 500);
+
+        var clickRadioButtonYes = pageStorage.elementsPage.radioButtonYes();
+        clickRadioButtonYes.click(new Locator.ClickOptions().setForce(true));
+
+        var checkResponseTitleYes = pageStorage.elementsPage.responseHeaderSelect().textContent();
+        assert checkResponseTitleYes.contains("Yes");
+
+        var clickRadioButtonImpressive = pageStorage.elementsPage.radioButtonImpressive();
+        clickRadioButtonImpressive.click(new Locator.ClickOptions().setForce(true));
+
+        var checkResponseTitleImpressive = pageStorage.elementsPage.responseHeaderSelect().textContent();
+        assert checkResponseTitleImpressive.contains("Impressive");
+
+        var checkButtonNoStatusDisable = pageStorage.elementsPage.radioButtonNo();
+        expect.toBeVisible(checkButtonNoStatusDisable, 500);
+        expect.isDisabled(checkButtonNoStatusDisable, 500);
     }
 
 

@@ -38,8 +38,24 @@ public class CustomExpect {
             assertThat(locator).isChecked(new LocatorAssertions.IsCheckedOptions().setTimeout(timeout));
         } catch (Exception e) {
             LogManager.error("Ошибка при проверке, что элемент " + locator + " выбран в течение " + timeout
-                    + " миллисекунд. " + "Ошибка: " + e.getMessage());
+                    + " миллисекунд. Ошибка: " + e.getMessage());
             throw e;
+        }
+    }
+
+    public void isEnabled(Locator locator, int timeout) {
+        try {
+            assertThat(locator).isEnabled(new LocatorAssertions.IsEnabledOptions().setTimeout(timeout));
+        } catch (Exception e) {
+            LogManager.error("Локатор: " + locator + " не имеет статус isEnabled" + e.getMessage());
+        }
+    }
+
+    public void isDisabled(Locator locator, int timeout) {
+        try {
+            assertThat(locator).isDisabled(new LocatorAssertions.IsDisabledOptions().setTimeout(timeout));
+        } catch (Exception e) {
+            LogManager.error("Ошибка при проверке, что элемент отключен: " + e.getMessage());
         }
     }
 }
