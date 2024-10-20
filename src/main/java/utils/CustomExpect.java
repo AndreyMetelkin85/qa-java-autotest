@@ -38,26 +38,24 @@ public class CustomExpect {
             assertThat(locator).isChecked(new LocatorAssertions.IsCheckedOptions().setTimeout(timeout));
         } catch (Exception e) {
             LogManager.error("Ошибка при проверке, что элемент " + locator + " выбран в течение " + timeout
-                    + " миллисекунд. " + "Ошибка: " + e.getMessage());
+                    + " миллисекунд. Ошибка: " + e.getMessage());
             throw e;
         }
     }
 
-//    public void containsText(Locator locator, String text) {
-//        try {
-//            String actualText = locator.textContent();
-//            assertThat(locator.textContent())
-//        } catch (Exception e) {
-//            LogManager.error("Текст: " + locator + "не соответствует ожидаемому тексту" + e.getMessage());
-//            throw e;
-//        }
-//    }
-//    public void  isDisabled(Locator locator, int timeout) {
-//        try {
-//            locator.isDisabled(new Locator.IsDisabledOptions().setTimeout(timeout));
-//        }
-//        catch (Exception e) {
-//            LogManager.error("Локатор: " + locator + "не имеет статус Disabled");
-//        }
-//    }
+    public void isEnabled(Locator locator, int timeout) {
+        try {
+            assertThat(locator).isEnabled(new LocatorAssertions.IsEnabledOptions().setTimeout(timeout));
+        } catch (Exception e) {
+            LogManager.error("Локатор: " + locator + " не имеет статус isEnabled" + e.getMessage());
+        }
+    }
+
+    public void isDisabled(Locator locator, int timeout) {
+        try {
+            assertThat(locator).isDisabled(new LocatorAssertions.IsDisabledOptions().setTimeout(timeout));
+        } catch (Exception e) {
+            LogManager.error("Ошибка при проверке, что элемент отключен: " + e.getMessage());
+        }
+    }
 }

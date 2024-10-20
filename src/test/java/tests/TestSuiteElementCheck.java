@@ -10,6 +10,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+
 public class TestSuiteElementCheck {
     private final PlaywrightDriver driver;
     private final PageStorage pageStorage;
@@ -117,6 +119,7 @@ public class TestSuiteElementCheck {
     }
 
     @Test
+    @DisplayName("В тесте проверяем, что пользователь может кликнуть по кнопкам radio button")
     public void testRadioButtonCheck() {
         var selectCategory = pageStorage.homePage.category_cards_home_page();
         selectCategory.getFirst().click();
@@ -139,9 +142,9 @@ public class TestSuiteElementCheck {
         var checkResponseTitleImpressive = pageStorage.elementsPage.responseHeaderSelect().textContent();
         assert checkResponseTitleImpressive.contains("Impressive");
 
-//        var checkButtonNoStatusDisable = pageStorage.elementsPage.radioButtonNo();
-//        expect.isDisabled(checkButtonNoStatusDisable, 500);
-
+        var checkButtonNoStatusDisable = pageStorage.elementsPage.radioButtonNo();
+        expect.toBeVisible(checkButtonNoStatusDisable, 500);
+        expect.isDisabled(checkButtonNoStatusDisable, 500);
     }
 
 
