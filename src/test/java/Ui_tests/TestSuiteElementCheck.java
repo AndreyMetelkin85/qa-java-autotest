@@ -1,4 +1,4 @@
-package tests;
+package Ui_tests;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
