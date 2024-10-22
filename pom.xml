@@ -14,7 +14,6 @@
             <artifactId>playwright</artifactId>
             <version>1.47.0</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -42,6 +41,12 @@
             <artifactId>allure-junit5</artifactId>
             <version>2.28.1</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>5.5.0</version>
+            <scope>compile</scope>
         </dependency>
 
     </dependencies>
